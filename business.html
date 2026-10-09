@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="BC Pokemon Cards sells Pokémon trading cards and is expanding into mobile game development, including Math Rush.">
+  <title>BC Pokemon Cards — Trading Cards &amp; Mobile Games</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --background: #ffffff;
+      --text: #1b2030;
+      --muted: #59647a;
+      --panel: #f5f7fb;
+      --border: #dce2ed;
+      --accent: #2a5bd7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.65;
+    }
+    .page { max-width: 52rem; margin: 0 auto; padding: 3.5rem 1.25rem 2rem; }
+    header { border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+    .eyebrow { color: var(--accent); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    h1 { font-size: clamp(2rem, 7vw, 3rem); line-height: 1.15; margin: 0.75rem 0 1rem; letter-spacing: -0.03em; }
+    .intro { max-width: 42rem; color: var(--muted); font-size: 1.1rem; margin: 0; }
+    .activities { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 2rem 0; }
+    .card { padding: 1.5rem; background: var(--panel); border: 1px solid var(--border); border-radius: 0.85rem; }
+    h2 { font-size: 1.2rem; line-height: 1.35; margin: 0 0 0.75rem; }
+    h3 { font-size: 1rem; margin: 1.25rem 0 0.4rem; }
+    p { margin: 0 0 1rem; }
+    .card p:last-child { margin-bottom: 0; }
+    a { color: var(--accent); text-underline-offset: 0.2em; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
+    .contact { padding-top: 0.5rem; }
+    .email { overflow-wrap: anywhere; }
+    footer { margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; }
+    @media (max-width: 36rem) {
+      .page { padding-top: 2.25rem; }
+      .activities { grid-template-columns: 1fr; }
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: #12161f;
+        --text: #e6ebf7;
+        --muted: #a6b1c8;
+        --panel: #1a202d;
+        --border: #344057;
+        --accent: #8fb0ff;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <p class="eyebrow">Trading cards &amp; mobile games</p>
+      <h1>BC Pokemon Cards</h1>
+      <p class="intro">We sell Pokémon trading cards and are expanding our business into mobile game development.</p>
+    </header>
+    <main>
+      <div class="activities">
+        <section class="card" aria-labelledby="cards-heading">
+          <h2 id="cards-heading">Pokémon trading cards</h2>
+          <p>Trading card sales are an established part of BC Pokemon Cards. We sell Pokémon cards for collectors and players.</p>
+        </section>
+        <section class="card" aria-labelledby="games-heading">
+          <h2 id="games-heading">Mobile game development</h2>
+          <p>Mobile games are a growing part of our business.</p>
+          <h3>Math Rush</h3>
+          <p>Our mobile game project combines quick arithmetic choices with crowd-runner gameplay.</p>
+          <p><a href="./">Read the Math Rush privacy policy</a></p>
+        </section>
+      </div>
+      <section class="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Game support</h2>
+        <p>For questions about Math Rush or its privacy policy, email<br>
+          <a class="email" href="mailto:m.a.t.h.r.u.s.h.0.0.1@gmail.com">m.a.t.h.r.u.s.h.0.0.1@gmail.com</a>.
+        </p>
+      </section>
+    </main>
+    <footer>BC Pokemon Cards · Trading cards and mobile game development</footer>
+  </div>
+</body>
+</html>
