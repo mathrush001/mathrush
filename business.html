@@ -23,15 +23,16 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       line-height: 1.65;
     }
-    .page { max-width: 68rem; margin: 0 auto; padding: 3.5rem 1.25rem 2rem; }
-    header { border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
-    .eyebrow { color: var(--accent); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .page { max-width: 68rem; margin: 0 auto; padding: 2rem 1.5rem; }
+    header { display: grid; grid-template-columns: 0.95fr 1.05fr; align-items: center; gap: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
+    .eyebrow { color: var(--accent); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
     h1 { font-size: clamp(2rem, 7vw, 3rem); line-height: 1.15; margin: 0.75rem 0 1rem; letter-spacing: -0.03em; }
-    .brand { margin: 0.75rem 0 1.25rem; }
-    .brand img { display: block; width: min(100%, 34rem); height: auto; }
-    .intro { max-width: 42rem; color: var(--muted); font-size: 1.1rem; margin: 0; }
-    .activities { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.25rem; margin: 2rem 0; }
-    .card { padding: 1.5rem; background: var(--panel); border: 1px solid var(--border); border-radius: 0.85rem; }
+    .brand { display: flex; align-items: center; overflow: hidden; aspect-ratio: 2 / 1; margin: 0; }
+    .brand img { display: block; width: 125%; max-width: none; flex: none; height: auto; margin-left: -12.5%; }
+    .intro { max-width: 36rem; color: var(--muted); font-size: 1.1rem; margin: 0; }
+    .activities { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin: 1.5rem 0; }
+    .card { display: flex; flex-direction: column; padding: 1.5rem; background: var(--panel); border: 1px solid var(--border); border-radius: 0.85rem; }
+    .section-intro { min-height: 5rem; margin-bottom: 0; }
     h2 { font-size: 1.2rem; line-height: 1.35; margin: 0 0 0.75rem; }
     h3 { font-size: 1rem; margin: 1.25rem 0 0.4rem; }
     p { margin: 0 0 1rem; }
@@ -41,17 +42,30 @@
     a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
     .button { display: inline-block; padding: 0.7rem 1.1rem; border-radius: 0.5rem; background: var(--accent); color: var(--background); font-weight: 700; text-decoration: none; }
     .button:hover { text-decoration: underline; }
-    .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.65rem; margin: 1.5rem 0 0.65rem; }
+    .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: center; gap: 0.65rem; height: 14rem; margin: 1rem 0; }
     .gallery a { display: block; border-radius: 0.5rem; overflow: hidden; }
-    .gallery img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: contain; border-radius: 0.5rem; }
+    .gallery img { display: block; width: 100%; height: auto; max-height: 14rem; aspect-ratio: 3 / 4; object-fit: contain; border-radius: 0.5rem; }
     .caption { font-size: 0.85rem; color: var(--muted); }
-    .game-image { display: block; width: min(100%, 16rem); height: auto; margin: 1.5rem auto; border-radius: 1.25rem; }
-    .contact { padding-top: 0.5rem; }
+    .game-art { display: flex; align-items: center; justify-content: center; height: 14rem; margin: 1rem 0; }
+    .game-image { display: block; width: 14rem; max-width: 100%; height: auto; max-height: 100%; border-radius: 1.25rem; }
+    .card h3 { margin-top: 0; }
+    .card-action { margin-top: auto; padding-top: 0.75rem; }
+    .contact { padding-top: 1.25rem; border-top: 1px solid var(--border); }
+    .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+    .contact-grid p { margin-bottom: 0; }
     .email { overflow-wrap: anywhere; }
-    footer { margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; }
+    footer { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; }
     @media (max-width: 48rem) {
-      .page { padding-top: 2.25rem; }
-      .activities { grid-template-columns: 1fr; }
+      .page { padding: 1.25rem; }
+      header { grid-template-columns: 1fr; gap: 0.75rem; text-align: center; }
+      .brand { width: min(100%, 26rem); margin: 0 auto; }
+      .intro { margin: 0 auto; }
+      .activities, .contact-grid { grid-template-columns: 1fr; }
+      .section-intro { min-height: 0; }
+      .gallery { height: auto; }
+      .gallery img { max-height: none; }
+      .game-art { height: 13rem; }
+      .game-image { width: 13rem; }
     }
     @media (max-width: 24rem) { .card { padding: 1rem; } }
     @media (prefers-color-scheme: dark) {
@@ -69,16 +83,17 @@
 <body>
   <div class="page">
     <header>
-      <p class="eyebrow">Trading cards &amp; mobile games</p>
       <h1 class="brand"><img src="images/bc-pokemon-cards-logo.png" width="1774" height="887" alt="BC Pokemon Cards" fetchpriority="high" decoding="async"></h1>
-      <p class="intro">We sell Pokémon trading cards and are expanding our business into mobile game development.</p>
+      <div class="header-copy">
+        <p class="eyebrow">Trading cards &amp; mobile games</p>
+        <p class="intro">We sell Pokémon trading cards and are expanding our business into mobile game development.</p>
+      </div>
     </header>
     <main>
       <div class="activities">
         <section class="card" aria-labelledby="cards-heading">
           <h2 id="cards-heading">Pokémon trading cards</h2>
-          <p>Trading card sales are an established part of BC Pokemon Cards. We sell Pokémon cards for collectors and players.</p>
-          <p><a class="button" href="https://www.ebay.ca/usr/pokemoncardsbc" target="_blank" rel="noopener noreferrer">Browse cards on eBay</a></p>
+          <p class="section-intro">Trading card sales are an established part of BC Pokemon Cards. We sell Pokémon cards for collectors and players.</p>
           <div class="gallery">
             <a href="https://www.ebay.ca/itm/277675068209" target="_blank" rel="noopener noreferrer" aria-label="View our Pikachu and Ash card listing on eBay">
               <img src="images/pikachu-ash.jpg" width="375" height="500" alt="Pikachu and Ash holographic Pokémon card from our eBay listings" decoding="async">
@@ -91,27 +106,31 @@
             </a>
           </div>
           <p class="caption">Photos from our eBay listings. Visit our eBay page for current availability.</p>
+          <p class="card-action"><a class="button" href="https://www.ebay.ca/usr/pokemoncardsbc" target="_blank" rel="noopener noreferrer">Browse cards on eBay</a></p>
         </section>
         <section class="card" aria-labelledby="games-heading">
           <h2 id="games-heading">Mobile game development</h2>
-          <p>Mobile games are a growing part of our business.</p>
-          <img class="game-image" src="images/mathrush-icon.png" width="512" height="512" alt="Math Rush — a fast-paced number adventure" decoding="async">
+          <p class="section-intro">Mobile games are a growing part of our business.</p>
+          <div class="game-art"><img class="game-image" src="images/mathrush-icon.png" width="512" height="512" alt="Math Rush — a fast-paced number adventure" decoding="async"></div>
           <h3>Math Rush</h3>
           <p>Our mobile game project combines quick arithmetic choices with crowd-runner gameplay.</p>
-          <p><a href="./">Read the Math Rush privacy policy</a></p>
+          <p class="card-action"><a href="./">Read the Math Rush privacy policy</a></p>
         </section>
       </div>
       <section class="contact" aria-labelledby="contact-heading">
         <h2 id="contact-heading">Contact BC Pokemon Cards</h2>
+        <div class="contact-grid">
         <p>For business enquiries, trading cards or mobile game development, email<br>
           <a class="email" href="mailto:bcpokemoncards@gmail.com">bcpokemoncards@gmail.com</a>.
         </p>
         <p>For Math Rush support or privacy questions, email<br>
           <a class="email" href="mailto:m.a.t.h.r.u.s.h.0.0.1@gmail.com">m.a.t.h.r.u.s.h.0.0.1@gmail.com</a>.
         </p>
+        </div>
       </section>
     </main>
     <footer>BC Pokemon Cards · Trading cards and mobile game development</footer>
   </div>
 </body>
 </html>
+
